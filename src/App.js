@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import {Loader} from "react-feather";
 import "./App.css";
 import Quotes from "./components/quotes/Quotes";
+import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
 
 function App() {
   const [quotes, setQuotes] = useState([]);
@@ -57,16 +58,16 @@ function App() {
     //console.log(selectedQuote);
   }
 
+ const removeFromFavorites = (quoteId) => {
+    const updatedFavorites = favoriteQuotes.filter((quote) => quote.id !== quoteId );
+    setFavoriteQuotes(updatedFavorites);
+  }
+
   return (
     <div className='App'>
       <Header />
       <main>
-        <section className="favorite-quotes">
-          <div className="wrapper quotes">
-            <h3>Top 3 favorite quotes</h3>
-            {favoriteQuotes.length > 0 && JSON.stringify(favoriteQuotes)};
-          </div>
-        </section>
+        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxQuotes={maxFaves} removeFromFavorites ={removeFromFavorites}/>
         {loading ? 
         <Loader /> : 
         <Quotes 
@@ -75,6 +76,7 @@ function App() {
           category = {category} 
           handleCategoryChange={handleCategoryChange} 
           addToFavorites={addToFavorites}
+          favoriteQuotes={favoriteQuotes}
           />}
       </main>
       <Footer />
