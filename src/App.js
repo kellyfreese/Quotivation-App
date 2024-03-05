@@ -11,7 +11,9 @@ function App() {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("All");
-  const [favoriteQuotes, setFavoriteQuotes] = useState([]);
+  const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
+ 
+  //console.log(favoriteQuotes.length);
   const [messageText, setMessageText] = useState("");
   const [showMessage, setShowMessage] = useState(false);
 
@@ -39,6 +41,10 @@ function App() {
     fetchQuotes();
   },[]);
 
+  useEffect (() => {
+    window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes))
+  },[favoriteQuotes])
+
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   }
@@ -49,7 +55,7 @@ function App() {
   const addToFavorites = (quoteId) => {
     const selectedQuote = quotes.find(quote => quote.id === quoteId)
     const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === selectedQuote.id)
-
+    //console.log("fql", favoriteQuotes.length);
     if (alreadyFavorite) {
       removeFromFavorites(quoteId);
     } else if (favoriteQuotes.length < maxFaves) {
@@ -60,6 +66,7 @@ function App() {
       setMessageText("Max number of quotes reached");
       setShowMessage(true);
     }
+    //console.log(favoriteQuotes.length);
     //console.log(selectedQuote);
   }
 
@@ -78,7 +85,7 @@ function App() {
       <Header />
       {showMessage && <Message messageText={messageText} removeMessage={removeMessage}/>}
       <main>
-        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxQuotes={maxFaves} removeFromFavorites ={removeFromFavorites}/>
+        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={maxFaves} removeFromFavorites ={removeFromFavorites}/>
         {loading ? 
         <Loader /> : 
         <Quotes 
