@@ -11,11 +11,12 @@ const FavoriteQuotes = ({favoriteQuotes, maxFaves, removeFromFavorites }) => {
           <div className="wrapper quotes">
             <h3>Top 3 favorite quotes</h3>
             {favoriteQuotes.length > 0 && (<ul>
-                {favoriteQuotes.map((quote) =>(
+                {favoriteQuotes.map((quote, index) =>(
                 <FavoriteQuoteCard 
                     key={quote.id} 
                     quote={quote} 
-                    removeFromFavorites={removeFromFavorites}/>))}
+                    removeFromFavorites={removeFromFavorites}
+                    listPosition={index + 1}/>))}
                 </ul>)}
                 { favoriteQuotes.length < maxFaves && (
              <div className="favorite-quotes-description">
