@@ -13,7 +13,7 @@ svg {
 }
 
 svg {
-  color: #ad7000;
+  color: #000000;
   width: 70px;
   height: 70px;
   margin: 1rem auto;
@@ -55,7 +55,7 @@ main {
 
 header {
   width: 100%;
-  background: #ffe7a8;
+  background: #88bbc1;
 }
 
 header h1 {
@@ -95,9 +95,9 @@ footer {
   width: 70%;
   text-align: center;
   font-size: 1.25rem;
-  background-color: #fff2cf;
-  color: #ad7000;
-  border: 2px solid #ad7000;
+  background-color: #cfe4e6;
+  color: #000000;
+  border: 2px solid #000000;
   padding: 3rem 1.5rem;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -130,7 +130,7 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   position: relative;
-  background: #ffe7a8;
+  background: #88bbc1;
 }
 
 .favorite-quotes .quotes h3 {
@@ -145,11 +145,11 @@ footer {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  border: 2px solid #ad7000;
+  border: 2px solid #000000;
   border-radius: 26px;
   background-color: transparent;
   font-size: 2rem;
-  color: #ad7000;
+  color: #000000;
 }
 
 .favorite-quotes .quote-card::before {
@@ -165,7 +165,7 @@ footer {
   font-size: 3.75rem;
   line-height: 20px;
   font-weight: 700;
-  background-color: #ffe7a8;
+  background-color: #88bbc1;
 } 
 
 .favorite-quotes .quote-card h3 {
@@ -186,7 +186,7 @@ footer {
   padding-bottom: 2rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #ad7000;
+  color: #000000;
 }
 
 .favorite-quotes .favorite-quotes-description p {
@@ -299,7 +299,7 @@ footer {
 }
 
 .quote-card .close-quote {
-  color: #ad7000;
+  color: #000000;
   transition: 0.1s;
   font-size: 1.4rem;
   font-weight: 700;

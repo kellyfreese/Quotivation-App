@@ -13,7 +13,6 @@ function App() {
   const [category, setCategory] = useState("All");
   const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
  
-  //console.log(favoriteQuotes.length);
   const [messageText, setMessageText] = useState("");
   const [showMessage, setShowMessage] = useState(false);
 
@@ -48,14 +47,13 @@ function App() {
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   }
-  //console.log(handleCategoryChange);
 
   const filteredQuotes = category !== "All" ? quotes.filter(quote => quote.categories.includes(category)) : quotes;
  
   const addToFavorites = (quoteId) => {
     const selectedQuote = quotes.find(quote => quote.id === quoteId)
     const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === selectedQuote.id)
-    //console.log("fql", favoriteQuotes.length);
+  
     if (alreadyFavorite) {
       removeFromFavorites(quoteId);
     } else if (favoriteQuotes.length < maxFaves) {
@@ -66,8 +64,6 @@ function App() {
       setMessageText("Max number of quotes reached");
       setShowMessage(true);
     }
-    //console.log(favoriteQuotes.length);
-    //console.log(selectedQuote);
   }
 
   const removeMessage = () => {
